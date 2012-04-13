@@ -35,7 +35,7 @@ namespace IP2IPDemo
                 ArrayList lst = ics.GetVideoSizes();
                 
                 //start previewing video using the default video size 
-                ics.StartPreview(13);
+                ics.StartPreview(0);
             }
             catch(Exception ex)
             {
