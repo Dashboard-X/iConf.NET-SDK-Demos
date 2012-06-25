@@ -110,7 +110,7 @@ namespace IP2IPDemo
 
 
 
-        private void ics_VideoPreviewStarted(int videoWidth, int videoHeight)
+        private void ics_VideoPreviewStarted(int videoWidth, int videoHeight, string deviceName)
         {
             // thid is where we are going to initialize the video encoder -
             // note that this is a change from previous versions
@@ -126,9 +126,6 @@ namespace IP2IPDemo
                 //listen for incoming connections
                 ics.Listen(true, ics.GetLocalIp()[0].ToString(), 9990, 17860, 17861);
             }));
-            
-
-
         }
 
        
