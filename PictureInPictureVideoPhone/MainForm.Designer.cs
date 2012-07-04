@@ -181,9 +181,9 @@
             this.lblOptions.ForeColor = System.Drawing.Color.White;
             this.lblOptions.Location = new System.Drawing.Point(0, 0);
             this.lblOptions.Name = "lblOptions";
-            this.lblOptions.Size = new System.Drawing.Size(50, 13);
+            this.lblOptions.Size = new System.Drawing.Size(27, 13);
             this.lblOptions.TabIndex = 3;
-            this.lblOptions.Text = "Options";
+            this.lblOptions.Text = "Call";
             this.lblOptions.Click += new System.EventHandler(this.lblOptions_Click);
             // 
             // pnlMenu

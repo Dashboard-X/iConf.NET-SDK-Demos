@@ -69,8 +69,7 @@ namespace CentralServerDemo
             this.Label3 = new System.Windows.Forms.Label();
             this.lblLoginStatus = new System.Windows.Forms.Label();
             this.gbContacts = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCheckConnection = new System.Windows.Forms.Button();
             this.btnScreenSharing = new System.Windows.Forms.CheckBox();
             this.btnJoinPrivateRoom = new System.Windows.Forms.Button();
             this.lblRemove = new System.Windows.Forms.Label();
@@ -169,7 +168,6 @@ namespace CentralServerDemo
             this.ics.TabIndex = 8;
             this.ics.VideoRateControl = iConfServer.NET.iConfServerDotNet.RateControl.ConstantBitRate;
             this.ics.VideoPreviewStarted += new iConfServer.NET.iConfServerDotNet.VideoPreviewStartedDelegate(this.ics_VideoPreviewStarted);
-            this.ics.NewDesktopAvailable += new iConfServer.NET.iConfServerDotNet.NewDesktopAvailableDelegate(this.ics_NewDesktopAvailable);
             this.ics.Talking += new iConfServer.NET.iConfServerDotNet.TalkingDelegate(this.ics_Talking);
             this.ics.CustomObjectReceived += new iConfServer.NET.iConfServerDotNet.CustomObjectReceivedDelegate(this.ics_CustomObjectReceived);
             this.ics.ReadyToShareScreen += new iConfServer.NET.iConfServerDotNet.ReadyToShareScreenDelegate(this.ics_ReadyToShareScreen);
@@ -197,7 +195,6 @@ namespace CentralServerDemo
             this.ics.FileDownloadProgress += new iConfServer.NET.iConfServerDotNet.FileDownloadProgressDelegate(this.ics_FileDownloadProgress);
             this.ics.FileDownloadCompleted += new iConfServer.NET.iConfServerDotNet.FileDownloadCompletedDelegate(this.ics_FileDownloadCompleted);
             this.ics.ScreenSharingSessionAvailable += new iConfServer.NET.iConfServerDotNet.ScreenSharingSessionAvailableDelegate(this.ics_ScreenSharingSessionAvailable);
-            this.ics.Log += new iConfServer.NET.iConfServerDotNet.LogDelegate(this.ics_Log);
             // 
             // label8
             // 
@@ -460,8 +457,7 @@ namespace CentralServerDemo
             // 
             // gbContacts
             // 
-            this.gbContacts.Controls.Add(this.button2);
-            this.gbContacts.Controls.Add(this.button1);
+            this.gbContacts.Controls.Add(this.btnCheckConnection);
             this.gbContacts.Controls.Add(this.btnScreenSharing);
             this.gbContacts.Controls.Add(this.btnJoinPrivateRoom);
             this.gbContacts.Controls.Add(this.lblRemove);
@@ -475,23 +471,15 @@ namespace CentralServerDemo
             this.gbContacts.TabStop = false;
             this.gbContacts.Text = "Contacts";
             // 
-            // button2
+            // btnCheckConnection
             // 
-            this.button2.Location = new System.Drawing.Point(92, 399);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 28;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(11, 399);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCheckConnection.Location = new System.Drawing.Point(11, 399);
+            this.btnCheckConnection.Name = "btnCheckConnection";
+            this.btnCheckConnection.Size = new System.Drawing.Size(177, 23);
+            this.btnCheckConnection.TabIndex = 28;
+            this.btnCheckConnection.Text = "Am I connected to server?";
+            this.btnCheckConnection.UseVisualStyleBackColor = true;
+            this.btnCheckConnection.Click += new System.EventHandler(this.btnCheckConnection_Click);
             // 
             // btnScreenSharing
             // 
@@ -1074,8 +1062,7 @@ namespace CentralServerDemo
         private PictureBox pbOffline;
         private PictureBox pictureBox4;
         private ToolStripMenuItem sendCustomObjectTestToolStripMenuItem;
-        private Button button2;
-        private Button button1;
+        private Button btnCheckConnection;
         private iConfServer.NET.iConfServerDotNet ics;
 
 	}

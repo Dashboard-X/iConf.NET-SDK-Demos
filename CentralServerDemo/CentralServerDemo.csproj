@@ -73,9 +73,11 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="iConfClient.NET, Version=1.0.6.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="iConfClient.NET">
       <HintPath>..\_References\iConfClient.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="iConfServer.NET">
+      <HintPath>..\_References\iConfServer.NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -293,12 +295,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\mute.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\iConfServer.NET\iConfServer.NET.csproj">
-      <Project>{68F0FCA6-643C-4712-AE8F-CA3226BC4BA4}</Project>
-      <Name>iConfServer.NET</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

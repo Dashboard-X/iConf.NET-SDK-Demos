@@ -1175,15 +1175,13 @@ namespace CentralServerDemo
 		}
 
 
-		private void ics_NewDesktopAvailable(int userid)
-		{
-			
+		
 
-		}
-
-        private void ics_Log(string logMessage)
+        private void btnCheckConnection_Click(object sender, EventArgs e)
         {
-          
+            bool isConnected = ics.IsConnectedToCentralServer;
+
+            MessageBox.Show("IsConnectedToCentralServer returned " + isConnected.ToString(), "info");
         }
 
 		

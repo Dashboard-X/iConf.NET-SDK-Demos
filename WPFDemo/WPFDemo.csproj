@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8C8B7D3A-6093-4DFE-9E35-62688C04B86F}</ProjectGuid>
+    <ProjectGuid>{4A2215E3-02C1-4B26-8197-E6A44B76A9A1}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WPFDemo</RootNamespace>

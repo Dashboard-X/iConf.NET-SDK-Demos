@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Forms;
 using iConfServer.NET;
+using iConfServer.NET.HelperClasses;
 
 namespace WPFDemo
 {
@@ -23,13 +14,14 @@ namespace WPFDemo
     /// </summary>
     public partial class Window1 : Window
     {
-        private iConfServer.NET.iConfServerDotNet icServer;
+        private iConfServerDotNet icServer;
         private iConfClient.NET.iConfClientDotNet icClient;
         public Window1()
         {
             InitializeComponent();
-            icServer = new iConfServer.NET.iConfServerDotNet();
+            icServer = new iConfServerDotNet();
             icServer.IncomingCall += new iConfServerDotNet.IncomingCallDelegate(icServer_IncomingCall);
+            icServer.VideoPreviewStarted += new iConfServerDotNet.VideoPreviewStartedDelegate(icServer_VideoPreviewStarted);
 
             icClient = new iConfClient.NET.iConfClientDotNet();
             wfServer.Child = icServer;
@@ -37,6 +29,19 @@ namespace WPFDemo
             wfClient.Child = icClient;
             icClient.Show();
 
+        }
+
+        void icServer_VideoPreviewStarted(int videoWidth, int videoHeight, string deviceName)
+        {
+            this.Dispatcher.Invoke(new MethodInvoker(delegate
+            {
+                //Initialize Codec -- MPEG 4, iframe frequency 20, bitrate 8000 bps
+
+                icServer.SetEncoderProperties(VideoCodecs.MPEG4, 20, 8000, 0, 0, 0);
+
+                //listen for incoming connections
+                icServer.Listen(true, icServer.GetLocalIp()[0].ToString(), 9990, 17860, 17861);
+            }));
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -47,20 +52,13 @@ namespace WPFDemo
             LoadVideoDevices();
 
             icServer.InitializeAudioSystem(iConfServer.NET.iConfServerDotNet.audioType.DirectSound, -1, -1, 16000, 10);
-
-
-            //MPEG4
-            icServer.SetEncoderProperties("MPEG4", 100, 6400, 0, 0, 0, icServer.PreviewWidth, icServer.PreviewHeight);
-
             //select the first available video device
 
-            
             cbDevices.SelectedIndex = 0;
 
             icServer.StartPreview(0);
 
-            //listen for incoming connections
-            icServer.Listen(true, icServer.GetLocalIp()[0].ToString(), 9990, 17860, 17861);
+           
         }
 
         private void LoadVideoDevices()
