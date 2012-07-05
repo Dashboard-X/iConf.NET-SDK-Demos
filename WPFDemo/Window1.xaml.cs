@@ -39,6 +39,7 @@ namespace WPFDemo
 
                 icServer.SetEncoderProperties(VideoCodecs.MPEG4, 20, 8000, 0, 0, 0);
 
+                if (!icServer.IsListening)
                 //listen for incoming connections
                 icServer.Listen(true, icServer.GetLocalIp()[0].ToString(), 9990, 17860, 17861);
             }));

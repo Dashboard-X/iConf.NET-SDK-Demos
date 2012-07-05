@@ -174,6 +174,7 @@ namespace VideoPhoneDemo
 
             //start listening for incoming calls on local ip and listening ports
 
+            if (!ics.IsListening)
             ics.Listen(true, ics.GetLocalIp()[0].ToString(), listeningVideoPort,
                        listeningAudioTcpPort, listeningAudioUdpPort);
 

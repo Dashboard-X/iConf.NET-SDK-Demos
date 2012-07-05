@@ -123,6 +123,7 @@ namespace IP2IPDemo
                 //Initialize Codec
                 ics.SetEncoderProperties(VideoCodecs.MPEG4, 20, 8000, 0, 0, 0);
 
+                if (!ics.IsListening)
                 //listen for incoming connections
                 ics.Listen(true, ics.GetLocalIp()[0].ToString(), 9990, 17860, 17861);
             }));
