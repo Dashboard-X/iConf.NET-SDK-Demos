@@ -40,6 +40,7 @@ namespace VideoPhoneDemo
                 ics = new iConfServerDotNet { Parent = pnlics, Dock = DockStyle.Fill, Visible = true };
 
                 ics.VideoPreviewStarted += new iConfServerDotNet.VideoPreviewStartedDelegate(ics_VideoPreviewStarted);
+                ics.VideoDeviceSelected += new iConfServerDotNet.VideoDeviceSelectedDelegate(ics_VideoDeviceSelected);
                 ics.ClientDisconnected += new iConfServerDotNet.ClientDisconnectedDelegate(ics_ClientDisconnected);
                 ics.IncomingCall += new iConfServerDotNet.IncomingCallDelegate(ics_IncomingCall);
                 ics.ScreenSharingSessionAccepted += new iConfServerDotNet.ScreenSharingSessionAcceptedDelegate(ics_ScreenSharingSessionAccepted);
@@ -54,7 +55,6 @@ namespace VideoPhoneDemo
 
                 icc.RequestToShareScreen += icc_RequestToShareScreen;
 
-                icc.NewDesktopAvailable += icc_NewDesktopAvailable;
                 //set ip to call to local ip
                 icc.ScreenSharingStopped += icc_ScreenSharingStopped; 
                 #endregion
@@ -65,6 +65,16 @@ namespace VideoPhoneDemo
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        //new video device has been selected.New video sizeds are available for the new device. Restart the Preview
+        void ics_VideoDeviceSelected(string deviceName)
+        {
+            Invoke(new MethodInvoker(delegate
+            {
+                LoadVideoSizes(cbVideoPreviewSizes);
+                RestartPreview();
+            }));
         }
 
         void ics_VideoPreviewStarted(int videoWidth, int videoHeight, string deviceName)
@@ -116,10 +126,10 @@ namespace VideoPhoneDemo
             LoadVideoDevices(cbVideoDevices);
             
             ics.SelectVideoDevice(0);
-            
-            LoadVideoSizes(cbVideoPreviewSizes);
 
             ics.StartPreview(cbVideoPreviewSizes.SelectedIndex);
+
+            loading = false;
             
         }
 
@@ -130,6 +140,7 @@ namespace VideoPhoneDemo
         /// <param name="cb"></param>
         private void LoadVideoDevices( ComboBox cb)
         {
+          
             cb.DataSource = ics.GetVideoDevices();    
         }
 
@@ -139,21 +150,21 @@ namespace VideoPhoneDemo
         /// <param name="cb"></param>
         private void LoadVideoSizes(ComboBox cb)
         {
+            cb.DataSource = null;
             cb.DataSource = ics.GetVideoSizes();
         }
 
 
         private void cbVideoDevices_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!loading)
-            {
+           
                 //assign selected video device to iConf Server
-                ics.SelectVideoDevice(cbVideoDevices.SelectedIndex);
+                Invoke(new MethodInvoker(delegate
+                                             {
+                                                 ics.SelectVideoDevice(cbVideoDevices.SelectedIndex);
+                                             }));
 
-                LoadVideoSizes(cbVideoPreviewSizes);
-
-                RestartPreview();
-            }
+            
         }
 
         /// <summary>
@@ -162,8 +173,7 @@ namespace VideoPhoneDemo
         private void RestartPreview()
         {
             //start the preview
-            ics.StartPreview(cbVideoPreviewSizes.SelectedIndex);
-            
+            ics.StartPreview(cbVideoPreviewSizes.SelectedIndex);  
         }
 
         private void btnStartPreview_Click(object sender, EventArgs e)
@@ -272,8 +282,7 @@ namespace VideoPhoneDemo
             Invoke(new MethodInvoker(delegate
             {
                 icc.SetImage(null); 
-            }));
-            
+            })); 
         }
 
 
@@ -299,12 +308,6 @@ namespace VideoPhoneDemo
             }));
            
         }
-
-        private void icc_NewDesktopAvailable(int sessionid)
-        {
-            
-        }
-
 
         private void btnRecord_Click(object sender, EventArgs e)
         {
@@ -342,7 +345,7 @@ namespace VideoPhoneDemo
             //stop listening ..
             ics.Listen(false, "", 0, 0, 0);
 
-            //stop teh preview
+            //stop the preview
             ics.StopPreview();
             closing = true;
         }
@@ -364,7 +367,7 @@ namespace VideoPhoneDemo
 
         private void btnStopScreenSharing_Click(object sender, EventArgs e)
         {
-                ics.StopScreenSharing();
+            ics.StopScreenSharing();
         }
 
         private void btnPopout_Click(object sender, EventArgs e)
@@ -374,11 +377,8 @@ namespace VideoPhoneDemo
             popoutform.Width = icc.CurrentVideoWidth;
             popoutform.Height = icc.CurrentVideoHeight;
 
-
             icc.Parent = popoutform.pnlViewer;
             icc.Dock = DockStyle.Fill;
-
-
         }
 
         

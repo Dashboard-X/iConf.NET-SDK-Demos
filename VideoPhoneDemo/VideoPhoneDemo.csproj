@@ -67,12 +67,10 @@
     <Reference Include="Accessibility">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="iConfClient.NET, Version=1.0.6.0, Culture=neutral, PublicKeyToken=4300bc540bfb680e, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="iConfClient.NET">
       <HintPath>..\_References\iConfClient.NET.dll</HintPath>
     </Reference>
-    <Reference Include="iConfServer.NET, Version=1.0.6.0, Culture=neutral, PublicKeyToken=4300bc540bfb680e, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="iConfServer.NET">
       <HintPath>..\_References\iConfServer.NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
