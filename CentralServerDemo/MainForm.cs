@@ -54,7 +54,7 @@ namespace CentralServerDemo
             //select the first available device ..
             cbWebcam.SelectedIndex = 0;
 
-            txtCentralIp.Text = "184.175.121.100";//ics.GetLocalIp()[0].ToString();
+            txtCentralIp.Text = "184.175.121.100"; // this is our sample central server for testing .. //ics.GetLocalIp()[0].ToString();
 
             ////initialize the audio system ! required
             ics.InitializeAudioSystem(iConfServerDotNet.audioType.DirectSound, -1, -1, 16000, 5);
@@ -1182,6 +1182,14 @@ namespace CentralServerDemo
             bool isConnected = ics.IsConnectedToCentralServer;
 
             MessageBox.Show("IsConnectedToCentralServer returned " + isConnected.ToString(), "info");
+        }
+
+        private void ics_Log(string logMessage)
+        {
+            logBox.AppendText(Environment.NewLine + "> " + logMessage);
+
+            logBox.SelectionStart = logBox.Text.Length;
+            logBox.ScrollToCaret();
         }
 
 		

@@ -100,6 +100,8 @@ namespace CentralServerDemo
             this.label7 = new System.Windows.Forms.Label();
             this.lblRoomName = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.logBox = new System.Windows.Forms.TextBox();
             this.lstShareFiles = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -133,6 +135,7 @@ namespace CentralServerDemo
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoginStatus)).BeginInit();
             this.groupBox4.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.cxConference.SuspendLayout();
@@ -195,6 +198,7 @@ namespace CentralServerDemo
             this.ics.FileDownloadProgress += new iConfServer.NET.iConfServerDotNet.FileDownloadProgressDelegate(this.ics_FileDownloadProgress);
             this.ics.FileDownloadCompleted += new iConfServer.NET.iConfServerDotNet.FileDownloadCompletedDelegate(this.ics_FileDownloadCompleted);
             this.ics.ScreenSharingSessionAvailable += new iConfServer.NET.iConfServerDotNet.ScreenSharingSessionAvailableDelegate(this.ics_ScreenSharingSessionAvailable);
+            this.ics.Log += new iConfServer.NET.iConfServerDotNet.LogDelegate(this.ics_Log);
             // 
             // label8
             // 
@@ -345,7 +349,7 @@ namespace CentralServerDemo
             this.txtCentralIp.Name = "txtCentralIp";
             this.txtCentralIp.Size = new System.Drawing.Size(152, 21);
             this.txtCentralIp.TabIndex = 5;
-            this.txtCentralIp.Text = "64.46.34.51";
+            this.txtCentralIp.Text = "184.175.121.100";
             // 
             // txtCentralPort
             // 
@@ -777,6 +781,7 @@ namespace CentralServerDemo
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.groupBox7);
             this.groupBox4.Controls.Add(this.lstShareFiles);
             this.groupBox4.Location = new System.Drawing.Point(533, 168);
             this.groupBox4.Name = "groupBox4";
@@ -784,6 +789,28 @@ namespace CentralServerDemo
             this.groupBox4.TabIndex = 21;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Downloaded files";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.logBox);
+            this.groupBox7.Location = new System.Drawing.Point(6, 156);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(188, 113);
+            this.groupBox7.TabIndex = 2;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Log";
+            // 
+            // logBox
+            // 
+            this.logBox.BackColor = System.Drawing.Color.White;
+            this.logBox.ForeColor = System.Drawing.Color.Blue;
+            this.logBox.Location = new System.Drawing.Point(7, 21);
+            this.logBox.Multiline = true;
+            this.logBox.Name = "logBox";
+            this.logBox.ReadOnly = true;
+            this.logBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.logBox.Size = new System.Drawing.Size(175, 85);
+            this.logBox.TabIndex = 0;
             // 
             // lstShareFiles
             // 
@@ -796,7 +823,7 @@ namespace CentralServerDemo
             this.lstShareFiles.Location = new System.Drawing.Point(6, 20);
             this.lstShareFiles.MultiSelect = false;
             this.lstShareFiles.Name = "lstShareFiles";
-            this.lstShareFiles.Size = new System.Drawing.Size(188, 250);
+            this.lstShareFiles.Size = new System.Drawing.Size(188, 129);
             this.lstShareFiles.TabIndex = 1;
             this.lstShareFiles.UseCompatibleStateImageBehavior = false;
             this.lstShareFiles.View = System.Windows.Forms.View.Details;
@@ -931,7 +958,7 @@ namespace CentralServerDemo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(951, 456);
+            this.ClientSize = new System.Drawing.Size(950, 456);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pbOffline);
             this.Controls.Add(this.pbOnline);
@@ -974,6 +1001,8 @@ namespace CentralServerDemo
             ((System.ComponentModel.ISupportInitialize)(this.pbProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoginStatus)).EndInit();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -1064,6 +1093,8 @@ namespace CentralServerDemo
         private ToolStripMenuItem sendCustomObjectTestToolStripMenuItem;
         private Button btnCheckConnection;
         private iConfServer.NET.iConfServerDotNet ics;
+        private GroupBox groupBox7;
+        private TextBox logBox;
 
 	}
 
