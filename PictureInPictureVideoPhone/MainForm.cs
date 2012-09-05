@@ -32,7 +32,8 @@ namespace PictureInPictureVideoPhone
                 GetLocalIp();
                 InitializeAudio();
                 ListVideoDevices();
-                
+                StartVideoPreview(0);
+
             }
             catch (Exception ex)
             {

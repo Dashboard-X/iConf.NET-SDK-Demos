@@ -71,6 +71,7 @@
             this.icc.BackColor = System.Drawing.Color.Gray;
             this.icc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.icc.CallbackObject = null;
+            this.icc.EncryptedData = false;
             this.icc.Location = new System.Drawing.Point(288, 12);
             this.icc.Name = "icc";
             this.icc.Size = new System.Drawing.Size(398, 313);
@@ -80,6 +81,7 @@
             // 
             this.ics.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ics.CallbackObject = null;
+            this.ics.EncryptedData = false;
             this.ics.Location = new System.Drawing.Point(12, 12);
             this.ics.Name = "ics";
             this.ics.Size = new System.Drawing.Size(214, 207);

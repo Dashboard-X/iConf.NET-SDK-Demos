@@ -733,9 +733,8 @@ namespace CentralServerDemo
 
 		private void btnViewConferenceChat_Click(object sender, EventArgs e)
 		{
-			ics.SendPrivatemessageToUser("test", "user2");
-			//chatForm.Show();
-			//chatForm.Bri  ngToFront();
+            chatForm.Show();
+            chatForm.BringToFront();
 		}
 
 		private void ics_ConferenceMessageReceived(object sender, string messageReceived, string fromUser)
@@ -1192,9 +1191,18 @@ namespace CentralServerDemo
             logBox.ScrollToCaret();
         }
 
-		
 
+	    private void ics_ConferencePrivateMessageReceived(string messagereceived, string fromuser)
+	    {
+            //handle here
+	       // throw new NotImplementedException();
+	    }
 
+        private void btnHelpIP_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This is the IP Address of the computer where your central server service is running..",
+                            "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 	}
 
 	class myComboBoxItem

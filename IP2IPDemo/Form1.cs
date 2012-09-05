@@ -67,7 +67,7 @@ namespace IP2IPDemo
             //place a call to an iConf Server
             //note when using the Call function we have the ability to supply callback parameters 
             //which will help the peer connection call us back
-            icc.AutoReconnect = true;
+          
             icc.Call(ipToCall, videoPort, 0, 0, "test", ics.CallBackId, myIp, videoPort, audioTcpPort, audioUdpPort, "");
         }
 

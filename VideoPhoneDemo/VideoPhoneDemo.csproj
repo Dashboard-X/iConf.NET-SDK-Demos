@@ -68,10 +68,10 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="iConfClient.NET">
-      <HintPath>..\_References\iConfClient.NET.dll</HintPath>
+      <HintPath>..\_ReferencesX86\iConfClient.NET.dll</HintPath>
     </Reference>
     <Reference Include="iConfServer.NET">
-      <HintPath>..\_References\iConfServer.NET.dll</HintPath>
+      <HintPath>..\_ReferencesX86\iConfServer.NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

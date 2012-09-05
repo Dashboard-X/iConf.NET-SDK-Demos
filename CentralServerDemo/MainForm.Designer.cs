@@ -120,6 +120,7 @@ namespace CentralServerDemo
             this.pbOffline = new System.Windows.Forms.PictureBox();
             this.pbOnline = new System.Windows.Forms.PictureBox();
             this.pbSmile = new System.Windows.Forms.PictureBox();
+            this.btnHelpIP = new System.Windows.Forms.Button();
             this.gbMyVideo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbWebCam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.voiceActivationLevel)).BeginInit();
@@ -165,6 +166,7 @@ namespace CentralServerDemo
             // 
             this.ics.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ics.CallbackObject = null;
+            this.ics.EncryptedData = false;
             this.ics.Location = new System.Drawing.Point(43, 20);
             this.ics.Name = "ics";
             this.ics.Size = new System.Drawing.Size(219, 181);
@@ -194,6 +196,7 @@ namespace CentralServerDemo
             this.ics.UserLeftConference += new iConfServer.NET.iConfServerDotNet.UserLeftConferenceDelegate(this.ics_UserLeftConference);
             this.ics.JoinedConferenceRoom += new iConfServer.NET.iConfServerDotNet.JoinedConferenceRoomDelegate(this.ics_JoinedConferenceRoom);
             this.ics.ConferenceMessageReceived += new iConfServer.NET.iConfServerDotNet.ConferenceMessageReceivedDelegate(this.ics_ConferenceMessageReceived);
+            this.ics.ConferencePrivateMessageReceived += new iConfServer.NET.iConfServerDotNet.ConferencePrivateMessageReceivedDelegate(this.ics_ConferencePrivateMessageReceived);
             this.ics.ViewUserResponseReceived += new iConfServer.NET.iConfServerDotNet.ViewUserResponseReceivedDelegate(this.ics_ViewUserResponseReceived);
             this.ics.FileDownloadProgress += new iConfServer.NET.iConfServerDotNet.FileDownloadProgressDelegate(this.ics_FileDownloadProgress);
             this.ics.FileDownloadCompleted += new iConfServer.NET.iConfServerDotNet.FileDownloadCompletedDelegate(this.ics_FileDownloadCompleted);
@@ -214,7 +217,7 @@ namespace CentralServerDemo
             this.rdMovieFile.AutoSize = true;
             this.rdMovieFile.Location = new System.Drawing.Point(158, 238);
             this.rdMovieFile.Name = "rdMovieFile";
-            this.rdMovieFile.Size = new System.Drawing.Size(70, 17);
+            this.rdMovieFile.Size = new System.Drawing.Size(79, 17);
             this.rdMovieFile.TabIndex = 6;
             this.rdMovieFile.Text = "Movie file";
             this.rdMovieFile.UseVisualStyleBackColor = true;
@@ -225,7 +228,7 @@ namespace CentralServerDemo
             this.rdWebcam.Checked = true;
             this.rdWebcam.Location = new System.Drawing.Point(83, 238);
             this.rdWebcam.Name = "rdWebcam";
-            this.rdWebcam.Size = new System.Drawing.Size(68, 17);
+            this.rdWebcam.Size = new System.Drawing.Size(73, 17);
             this.rdWebcam.TabIndex = 5;
             this.rdWebcam.TabStop = true;
             this.rdWebcam.Text = "Webcam";
@@ -290,7 +293,7 @@ namespace CentralServerDemo
             this.chkVoiceActivation.AutoSize = true;
             this.chkVoiceActivation.Location = new System.Drawing.Point(54, 39);
             this.chkVoiceActivation.Name = "chkVoiceActivation";
-            this.chkVoiceActivation.Size = new System.Drawing.Size(102, 17);
+            this.chkVoiceActivation.Size = new System.Drawing.Size(115, 17);
             this.chkVoiceActivation.TabIndex = 19;
             this.chkVoiceActivation.Text = "Voice activation";
             this.chkVoiceActivation.UseVisualStyleBackColor = true;
@@ -323,6 +326,7 @@ namespace CentralServerDemo
             // 
             // gbCentralServerMode
             // 
+            this.gbCentralServerMode.Controls.Add(this.btnHelpIP);
             this.gbCentralServerMode.Controls.Add(this.label1);
             this.gbCentralServerMode.Controls.Add(this.txtCentralIp);
             this.gbCentralServerMode.Controls.Add(this.txtCentralPort);
@@ -632,7 +636,7 @@ namespace CentralServerDemo
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(63, 201);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.Size = new System.Drawing.Size(49, 13);
             this.label6.TabIndex = 22;
             this.label6.Text = "Volume";
             // 
@@ -954,6 +958,16 @@ namespace CentralServerDemo
             this.pbSmile.TabStop = false;
             this.pbSmile.Visible = false;
             // 
+            // btnHelpIP
+            // 
+            this.btnHelpIP.Location = new System.Drawing.Point(82, 29);
+            this.btnHelpIP.Name = "btnHelpIP";
+            this.btnHelpIP.Size = new System.Drawing.Size(24, 23);
+            this.btnHelpIP.TabIndex = 8;
+            this.btnHelpIP.Text = "?";
+            this.btnHelpIP.UseVisualStyleBackColor = true;
+            this.btnHelpIP.Click += new System.EventHandler(this.btnHelpIP_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -1095,6 +1109,7 @@ namespace CentralServerDemo
         private iConfServer.NET.iConfServerDotNet ics;
         private GroupBox groupBox7;
         private TextBox logBox;
+        private Button btnHelpIP;
 
 	}
 

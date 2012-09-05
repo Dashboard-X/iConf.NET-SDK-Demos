@@ -125,7 +125,7 @@ namespace VideoPhoneDemo
 
             LoadVideoDevices(cbVideoDevices);
             
-            ics.SelectVideoDevice(0);
+            ics.SelectVideoDevice(1);
 
             ics.StartPreview(cbVideoPreviewSizes.SelectedIndex);
 
@@ -311,26 +311,21 @@ namespace VideoPhoneDemo
 
         private void btnRecord_Click(object sender, EventArgs e)
         {
-           
-                if (recordingics == null)
-                    recordingics = new iConfServerDotNet();
 
-                if (recordingics.StartRecordingToWMV(icc.Handle.ToInt32(), false, "testing.wmv"))
-                {
-                    btnStopRecording.Enabled = true;
-                    btnRecord.Enabled = false;
-                }
-           
+            icc.StartRecording(25, "test.mp4", 20);
+
+            btnStopRecording.Enabled = true;
+            btnRecord.Enabled = false;
         }
 
         private void btnStopRecording_Click(object sender, EventArgs e)
         {
-            recordingics.StopRecording();
+            icc.StopRecording();
             btnStopRecording.Enabled = false;
             btnRecord.Enabled = true;
 
-            //open avi file
-            Process.Start("testing.wmv");     
+            ////open avi file
+            //Process.Start("testing.wmv");     
         }
 
         private void btnTakePic_Click(object sender, EventArgs e)
